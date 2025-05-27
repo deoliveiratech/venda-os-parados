@@ -139,6 +139,12 @@ h1 {
   opacity: 0.8;
 }
 
+.list-item small {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+
 @media (max-width: 600px) {
   .form {
     flex-direction: column;

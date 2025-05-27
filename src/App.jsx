@@ -5,15 +5,15 @@ import Dashboard from './components/Dashboard';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [itemEdit, setItemEdit] = useState(null);
 
   return (
     <>
       <div className="container">
-      <h1>Meu Controle de Vendas</h1>
+      <h1>VendaOsParadosApp</h1>
       <Dashboard />
-      <ItemForm />
-      <ItemList />
+      <ItemForm itemEdit={itemEdit} setItemEdit={setItemEdit} />
+      <ItemList setItemEdit={setItemEdit} />
     </div>
     </>
   )

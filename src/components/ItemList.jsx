@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { collection, onSnapshot, doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-function ItemList() {
+function ItemList({ setItemEdit }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -26,16 +26,23 @@ function ItemList() {
       <h2>Itens Cadastrados</h2>
       {items.map((item) => (
         <div key={item.id} className="list-item">
-          <strong>{item.nome}</strong> - R$ {item.valor.toFixed(2)} 
-          <select
-            value={item.status}
-            onChange={(e) => handleStatusChange(item.id, e.target.value)}
-          >
-            <option value="Pendente">Pendente</option>
-            <option value="Anunciado">Anunciado</option>
-            <option value="Vendido">Vendido</option>
-          </select>
-          <button onClick={() => handleDelete(item.id)}>🗑️</button>
+          <strong onClick={() => setItemEdit(item)} style={{ cursor: 'pointer', color: '#4ade80' }}>
+            {item.nome}
+          </strong>{' '}
+          - R$ {item.valor.toFixed(2)}
+          <br />
+          <small>Obs: {item.observacao || '---'}</small>
+          <div>
+            <select
+              value={item.status}
+              onChange={(e) => handleStatusChange(item.id, e.target.value)}
+            >
+              <option value="Pendente">Pendente</option>
+              <option value="Anunciado">Anunciado</option>
+              <option value="Vendido">Vendido</option>
+            </select>
+            <button onClick={() => handleDelete(item.id)}>🗑️</button>
+          </div>
         </div>
       ))}
     </div>
