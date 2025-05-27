@@ -29,7 +29,7 @@ function Dashboard() {
       <div className="card">Total Geral: <strong>R$ {total.toFixed(2)}</strong></div>
       <div className="card">Vendido: <strong>R$ {totalVendido.toFixed(2)}</strong></div>
       <div className="card">Anunciado: <strong>R$ {totalAnunciado.toFixed(2)}</strong></div>
-      <div className="card">Pendente: <strong>R$ {totalPendente.toFixed(2)}</strong></div>
+      <div className="card">Pendente: <strong style={{color: '#f59137e8'}}>R$ {totalPendente.toFixed(2)}</strong></div>
     </div>
   );
 }
